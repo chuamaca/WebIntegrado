@@ -1,0 +1,6 @@
+controlador\control.class
+util\SQLConexion.class
+modelo\Prestamo.class
+util\MySQLConexion.class
+dao\PrestamoDAO.class
+util\PruebaConexion.class

@@ -1,0 +1,13 @@
+modelo\Pago.class
+NewMain.class
+dao\Negocio.class
+util\MySQLConexion.class
+modelo\Alumno.class
+modelo\Especialidad.class
+modelo\Nota.class
+modelo\Profesor.class
+dao\AlumnoDAO.class
+modelo\CursoProfe.class
+util\PruebaConexion.class
+controlador\control.class
+modelo\Curso.class
