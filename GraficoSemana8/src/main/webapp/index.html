@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Graficos</h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <form action="Grafico.jsp" target="zona">
+
+                        Ingrese año: <input type="text" name="anio" />
+
+                        <br>
+                        <input type="radio" name="opc" value="bar">Barra
+                        <input type="radio" name="opc"  value="pie">Torta
+                        <input type="radio" name="opc"  value="line">Lineal
+                        <input type="submit">
+                    </form>
+                    <br>
+                    <iframe name="zona" width="100%" height="500"></iframe>
+
+                </div>
+                <div class="col-sm-6">
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </body>
+</html>

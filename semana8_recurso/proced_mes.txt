@@ -1,0 +1,6 @@
+create procedure spmes(an int)
+select month(fac_fec) mes , sum(art_pre*art_can) total
+from fac_cabe f inner join fac_deta d on f.fac_num=d.fac_num 
+inner join articulos a on a.art_cod=d.art_cod 
+where year(fac_fec)=an
+GROUP by month(fac_fec)
