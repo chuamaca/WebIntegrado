@@ -1,0 +1,98 @@
+listas de categorias
+
+Connection cn=MySQLConexion.getConexion();
+     List<Categoria> lis=new ArrayList();
+     try{
+     String sql="Select idcategoria,descripcion,imagen from categorias";
+     PreparedStatement st=cn.prepareStatement(sql);
+     ResultSet rs=st.executeQuery();
+     while(rs.next()){
+         Categoria p=new Categoria();
+         p.setCodc(rs.getString(1));
+         p.setNomc(rs.getString(2));
+         p.setImagen(rs.getString(3));
+         lis.add(p);
+     }
+     }catch(Exception ex){
+      ex.printStackTrace();
+     }finally{
+         try{ cn.close();}catch(Exception ex2){}
+     }
+    return lis;
+
+===============================================
+listas de productos pasando un catetegoria
+
+Connection cn=MySQLConexion.getConexion();
+     List<Articulo> lis=new ArrayList();
+     try{
+     String sql="Select idArticulo,descripcion,PrecioUnidad,stock,imagen from articulos"
+             + " where idcategoria=?";
+     PreparedStatement st=cn.prepareStatement(sql);
+     st.setString(1, id);
+     ResultSet rs=st.executeQuery();
+     while(rs.next()){
+         Articulo p=new Articulo();
+         p.setCoda(rs.getString(1));
+         p.setNomart(rs.getString(2));
+         p.setPrecio(rs.getDouble(3));
+         p.setStk(rs.getInt(4));
+         p.setImagen(rs.getString(5));
+         lis.add(p);
+     }
+     }catch(Exception ex){
+      ex.printStackTrace();
+     }finally{
+         try{ cn.close();}catch(Exception ex2){}
+     }
+    return lis;
+========================================================
+consulta de un producto
+
+Connection cn=MySQLConexion.getConexion();
+     Articulo p=null;
+     try{
+     String sql="Select idArticulo,descripcion,PrecioUnidad,stock,imagen from articulos"
+             + " where idArticulo=?";
+     PreparedStatement st=cn.prepareStatement(sql);
+     st.setString(1, id);
+     ResultSet rs=st.executeQuery();
+     if(rs.next()){
+         p=new Articulo();
+         p.setCoda(rs.getString(1));
+         p.setNomart(rs.getString(2));
+         p.setPrecio(rs.getDouble(3));
+         p.setStk(rs.getInt(4));
+         p.setImagen(rs.getString(5));
+       }
+     }catch(Exception ex){
+      ex.printStackTrace();
+     }finally{
+         try{ cn.close();}catch(Exception ex2){}
+     }
+     return p;
+
+============================
+busqueda de un cliente
+ Connection cn=MySQLConexion.getConexion();
+     Cliente p=null;
+     try{
+     String sql="Select Apellidos, nombres from clientes where idcliente=? and Password=?";
+     PreparedStatement st=cn.prepareStatement(sql);
+     st.setString(1, usr);
+     st.setString(2, pwd);
+     ResultSet rs=st.executeQuery();
+     if(rs.next()){
+         p=new Cliente();
+         p.setCodc(usr);
+         p.setApe(rs.getString(1));
+         p.setNom(rs.getString(2));
+       }
+     }catch(Exception ex){
+      ex.printStackTrace();
+     }finally{
+         try{ cn.close();}catch(Exception ex2){}
+     }
+     return p;
+
+

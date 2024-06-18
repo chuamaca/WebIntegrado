@@ -39,8 +39,6 @@
                 <tr><td>Cantidad<dt><input name="cantidad">
                 <tr><td><a href="#" onClick="valida()"><img src="images/cesta.gif"></a> 
             </table>
-
-
         </form>
 
 

@@ -1,0 +1,11 @@
+beans\Articulo.class
+util\Prueba1.class
+beans\Compra.class
+beans\Categoria.class
+controlador\tienda.class
+util\SQLConexion.class
+controlador\generaQr.class
+dao\Negocio.class
+util\MySQLConexion.class
+beans\Cliente.class
+interfaces\Itienda.class
