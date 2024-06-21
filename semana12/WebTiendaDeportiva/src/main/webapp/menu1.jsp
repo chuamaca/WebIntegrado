@@ -30,9 +30,7 @@
             <li>
                 <a class="nav-link" href="./control?opc=1">Articulos</a>
             </li> 
-            <li>
-                <a class="nav-link" href="./control?opc=4">Otros</a>
-            </li> 
+           
 
         </ul>
     </nav>

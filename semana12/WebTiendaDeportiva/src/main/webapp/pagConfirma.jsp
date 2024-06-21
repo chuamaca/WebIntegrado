@@ -40,9 +40,9 @@
 
         </table>
 
-        <iframe name="zona" height="400" width="400">  </iframe>
+        <iframe name="zona" height="400" width="400"></iframe>
 
-            <a href="pagCategoria.jsp" class="btn btn-success">Otra Compra</a>
+            <a href="control?opc=1" class="btn btn-success">Otra Compra</a>
       
     </center>   
 </body>

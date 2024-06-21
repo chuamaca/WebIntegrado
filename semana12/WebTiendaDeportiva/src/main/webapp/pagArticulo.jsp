@@ -16,7 +16,8 @@
         %>    
         <h1>Lista de Articulos</h1>
 
-<!--        <table border="1" cellpadding="15" cellspacing="15">
+
+        <table border="1" cellpadding="15" cellspacing="15" class="table table-info">
             <tr>
                 <%
                     int cuenta = 0;
@@ -24,37 +25,13 @@
                 %>
                 <td align="center">
                     <a href="control?opc=2&cod=<%=x.getIdArticulo()%>">
-                        <img src="FOTOS/<%=x.getIdArticulo()%>.jpg" width="100" height="100">
-                        <br><p class="text-body-secondary"><%=x.getDescripcion()%></p>
-                    </a>
-                    <%
-                            cuenta++;
-                            if (cuenta % 3 == 0) {
-                                out.print("<tr>");
-                            }
-                        }
-                    %>    
-
-        </table>-->
-
-
-        <table border="1" cellpadding="15" cellspacing="15">
-            <tr>
-                <%
-                    int cuenta2 = 0;
-                    for (Articulo x : lista) {
-                %>
-                <td align="center">
-                    <a href="control?opc=2&cod=<%=x.getIdArticulo()%>">
-                        <div class="card border-primary mb-3" style="max-width: 20rem;">
-                            <div class="card-header"></div>
+                        <div class="card bg-primary mb-3 mb-3" style="max-width: 20rem;">
+                            <div class="card-header"><%=x.getDescripcion()%></div>
                             <div class="card-body">
-                                <h4 class="card-title"><%=x.getDescripcion()%></h4>
+                                <h4 class="card-title">-</h4>
                                 <img src="FOTOS/<%=x.getIdArticulo()%>.jpg" width="100" height="100">
                             </div>
                         </div>
-
-
                     </a>
                     <%
                             cuenta++;
