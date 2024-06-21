@@ -120,15 +120,35 @@ public class tienda extends HttpServlet {
         double total = (double) sesion.getAttribute("total");
         String fac = obj.grabaFactura(lista, cliente.getCodc());
         String cad = "Factura Nro  " + fac;
-        cad = "\n cliente " + cliente.getApe() + ", " + cliente.getNom();
-        cad = "\n Total compra " + total;
+        cad+= "\n cliente " + cliente.getApe() + ", " + cliente.getNom();
+        cad+= "\n Total compra " + total;
         sesion.setAttribute("canasta", null);
         sesion.setAttribute("cliente", null);
-        response.sendRedirect("generarQr?text=" + cad);
+        response.sendRedirect("generaQr?texto="+cad);
 
 //        sesion.setAttribute("canasta", lista);
 //        String pag = "/pagCompra.jsp";
 //        request.getRequestDispatcher(pag).forward(request, response);
+    }
+    
+    protected void graba(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       HttpSession ses=request.getSession() ;//crear una sesion
+       List<Compra> lista= (ArrayList<Compra>)ses.getAttribute("canasta");
+       Cliente cli=(Cliente)ses.getAttribute("cliente");
+       double total=(double)ses.getAttribute("total");
+       //graba la factura y el detalle
+       String fac=obj.grabaFactura(lista, cli.getCodc());
+       String cad="Factura Nro :"+fac;
+       cad+="\n Cliente "+cli.getApe()+","+cli.getNom();
+       cad+="\n Total Compra "+total;
+       ses.setAttribute("canasta", null);
+       ses.setAttribute("cliente", null);
+       response.sendRedirect("generaQr?texto="+cad);
+       //ses.setAttribute("canasta", lista);
+       //String pag="/pagCompra.jsp";
+      //request.getRequestDispatcher(pag).forward(request, response);
+       
     }
 
     protected void busArt(HttpServletRequest request, HttpServletResponse response)

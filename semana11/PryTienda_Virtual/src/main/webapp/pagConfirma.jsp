@@ -15,8 +15,8 @@
             List<Compra> lista = (List<Compra>) ses.getAttribute("canasta");
         %>    
         <h1>Confirmar Compra</h1>
-        <a href="control?opc=6" target="zona" class="btn btn-primary">Aceptar</a>
-        <a href="control?opc=7" class="btn btn-danger">Cancelar Compra</a>
+        <a href="tienda?opc=6" target="zona" class="btn btn-primary">Aceptar</a>
+        <a href="tienda?opc=7" class="btn btn-danger">Cancelar Compra</a>
 
         <table border="1" cellpadding="15" cellspacing="15" class="table table-bordered">
             <thead>
@@ -32,15 +32,16 @@
 
                     sm += x.total();
                 }
+                ses.setAttribute("total", sm);
             %>
             <tr><td colspan="4">Total Compra<td><%=sm%>
 
         </table>
 
-        <iframe name="zona" height="400" width="400">
+        <iframe name="zona" height="400" width="400">  </iframe>
 
             <a href="pagCategoria.jsp" class="btn btn-success">Otra Compra</a>
-        </iframe>
+      
     </center>   
 </body>
 </html>
