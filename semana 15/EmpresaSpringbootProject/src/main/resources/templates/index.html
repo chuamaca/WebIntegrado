@@ -1,0 +1,35 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{/css/adminlte.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+<a th:href="@{/new}" class="btn btn-primary">nuevo</a>
+<table class="table table-striped">
+<thead>
+<tr class="bg-dark text-white">
+<th>Codigo</th>
+<th>Nombre</th>
+<th>horas</th>
+<th>tarifa</th>
+<th>Pago</th>
+<th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+ <tr th:each="persona : ${empleados}">
+ <td th:text="${persona.code}"></td>
+ <td th:text="${persona.nombre}"></td>
+ <td th:text="${persona.horas}"></td>
+ <td th:text="${persona.tarifa}"></td>
+ <td th:text="${persona.pago()}"></td>
+ <td>
+ <a class="btn btn-warning" th:href="@{/editar/}+${persona.codigo}">editarr</a>
+<a class="btn btn-danger" th:href="@{/eliminar/}+${persona.codigo}">Anular</a>
+ </td>
+</tr>
+</body>
+</html>

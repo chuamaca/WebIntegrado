@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="fr3">
+            <p:panelGrid columns="2">
+                <p:outputLabel value="Seleccione Curso "/>
+                <h:selectOneMenu value="#{control1.cur.idCurso}">
+                    <f:selectItem itemLabel="--Elegir--"/>
+                    <f:selectItems value="#{control1.lisCur}"/>
+                    <p:ajax update="tabalu"
+                            listener="#{control1.filtraCur()}"/>
+
+                </h:selectOneMenu>
+
+
+
+            </p:panelGrid>   
+
+            <h2>Lista de Notas x Curso</h2>
+            <p:dataTable value="#{control1.lisaluN}" id="tabalu" var="alu" paginator="true"
+                         rows="4">
+                <p:column headerText="Codigo">
+                    <p:outputLabel value="#{alu.coda}"/> 
+                </p:column>
+                <p:column headerText="Apellido">
+                    <p:outputLabel value="#{alu.ape}"/> 
+                </p:column>
+                <p:column headerText="nombre">
+                    <p:outputLabel value="#{alu.noma}"/> 
+                </p:column>
+                <p:column headerText="Ex. Parcial">
+                    <p:outputLabel value="#{alu.exaParcial}"/> 
+                </p:column>
+                <p:column headerText="Ex. Final">
+                    <p:outputLabel value="#{alu.exaFinal}"/> 
+                </p:column>
+                <p:column headerText="Promedio">
+                    <p:outputLabel value="#{alu.promedio}"/> 
+                </p:column>
+                <p:columnGroup type="footer">
+                    <p:row>
+                        <p:column colspan="2" footerText="Nro Aprobados"/>
+                        <p:column footerText="#{control1.cantAPO}"/>
+                    </p:row>  
+                    <p:row>
+                        <p:column colspan="2" footerText="Nro Desaprobados"/>
+                        <p:column footerText="#{control1.cantDesa}"/>
+                    </p:row>  
+                 </p:columnGroup>
+
+
+
+            </p:dataTable>
+        </h:form>
+
+
+
+
+
+    </h:body>
+</html>
