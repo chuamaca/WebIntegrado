@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html mlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="ISO-8859-1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Insert title here</title>
+        <link th:href="@{/css/adminlte.min.css}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-4 ">
+            <div class="col-sm-6">
+                <form th:action="@{/save}" method="Post" th:object="${persona}">
+                    <div class="card">
+                        <div class="card-header" th:text="${titulo}">
+                            <h3>Datos del Empleado</h3>
+                        </div>
+                        <div class"card-body">
+                            <div class="form-group">
+                                <label>Codigo</label>
+                                <input type="text" th:field="*{code}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>NOmbre</label>
+                                <input type="text" th:field="*{nombre}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Horas</label>
+                                <input type="text" th:field="*{horas}" class="form-control">
+                            </div>
+                            <label>Tarifa</label>
+                            <input type="text" th:field="*{tarifa}" class="form-control">
+                        </div>
+
+                        <div class="card-footer">
+                            <input type="submit" value="guardar" class="btn btn-success">
+                        </div>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

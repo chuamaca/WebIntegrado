@@ -1,0 +1,58 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>Pacientes:</title>
+        <link th:href="@{/adminlte.min.css}" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container mt-4">
+            <a th:href="@{/new}" class="btn btn-primary">Nuevo paciente</a>
+
+            <form th:action ="@{/listar}">
+                <div class="form-group"> 
+                    <label>Ingresar nombre de paciente</label>
+                    <input type="text" th:value="${palabra}" name="palabra"/>
+                    <input type="submit" />
+                </div>
+            </form>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bg-dark text-white">
+                        <th>ID</th>
+                        <th>Tipo Documento</th>
+                        <th>Numero Documento</th>
+                        <th>Nombres</th>
+                        <th>Ap. Paterno</th>
+                        <th>Ap. Materno</th>
+                        <th>Genero</th>
+                        <th>Telefono</th>
+                         <th>Accion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="persona : ${pacientes}">
+                        <td th:text="${persona.idPaciente}"></td>
+                        <td th:text="${persona.tipo_documento}"></td>
+                        <td th:text="${persona.num_doc}"></td>
+                        <td th:text="${persona.nombres}"></td>
+                        <td th:text="${persona.apellidoPaterno}"></td>
+                        <td th:text="${persona.apellidoMaterno}"></td>
+                        <td th:text="${persona.genero}"></td>
+                        <td th:text="${persona.telefono}"></td>
+
+                        <td>
+                            <a class="btn btn-warning" th:href="@{/editar/}+${persona.idPaciente}">editar</a>
+                            <a class="btn btn-danger" th:href="@{/eliminar/}+${persona.idPaciente}">Anular</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+    </body>
+
+</div>
+</html>
