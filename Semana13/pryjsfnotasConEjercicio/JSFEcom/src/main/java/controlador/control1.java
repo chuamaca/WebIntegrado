@@ -20,11 +20,17 @@ public class control1 implements Serializable {
     private double total;
     private String texto;
     private String Idesp;
-    List<SelectItem> lisep ;//ASIGNAR PARA COMBOS
+    List<SelectItem> lisep;//ASIGNAR PARA COMBOS
     Especialidad ep;
-    
-    List<SelectItem> lisCur ;//ASIGNAR PARA COMBOS
+
+    List<SelectItem> lisCur;//ASIGNAR PARA COMBOS
     Curso cur;
+
+    List<SelectItem> lisCat;//ASIGNAR PARA COMBOS
+    MCategoria cat;
+    
+     private List<MProducto> lisproduct;
+
     private int CantDesa;
     private int CantAPO;
 
@@ -38,12 +44,27 @@ public class control1 implements Serializable {
         //    SelectItem sle = new SelectItem(x.getCode(), x.getNomes());
         //    lisep.add(sle);
         //}
-        
-        for (Curso x: new Negocio().LisCurso()){
+
+        for (Curso x : new Negocio().LisCurso()) {
             SelectItem sle = new SelectItem(x.getIdCurso(), x.getNomCurso());
             lisCur.add(sle);
         }
-        
+
+        lisCat = new ArrayList();
+
+        for (MCategoria x : new Negocio().LisCategoria()) {
+            SelectItem sle = new SelectItem(x.getIdCategoria(), x.getNombre());
+            lisCat.add(sle);
+        }
+
+    }
+
+    public List<SelectItem> getLisCat() {
+        return lisCat;
+    }
+
+    public void setLisCat(List<SelectItem> lisCat) {
+        this.lisCat = lisCat;
     }
 
     public void verpago(Alumno a) {
@@ -58,28 +79,53 @@ public class control1 implements Serializable {
     public void filtra() {
         lisalu = new Negocio().LisAlu(texto);
     }
-    
+
     public void filtraEsp() {
         lisalu = new Negocio().LisEsp(ep.getCode());
     }
-    
+
     public void filtraCur() {
         lisaluN = new Negocio().LisNotCurso(cur.getIdCurso());
-        CantDesa=0;
-        CantAPO=0;
-        for (Notas x: lisaluN){
-            if(x.getPromedio()<11){
-                CantDesa= CantDesa+1;
-            }else{
-                CantAPO= CantAPO+1;
+        CantDesa = 0;
+        CantAPO = 0;
+        for (Notas x : lisaluN) {
+            if (x.getPromedio() < 11) {
+                CantDesa = CantDesa + 1;
+            } else {
+                CantAPO = CantAPO + 1;
             }
         }
     }
+    
+    
+    public void filtraProduc() {
+        lisproduct = new Negocio().LisCategoriaProducto(cat.getIdCategoria());
+//        CantDesa = 0;
+//        CantAPO = 0;
+//        for (Notas x : lisaluN) {
+//            if (x.getPromedio() < 11) {
+//                CantDesa = CantDesa + 1;
+//            } else {
+//                CantAPO = CantAPO + 1;
+//            }
+//        }
+    }
+    
+    
 
     public control1() {
         texto = "";
-        ep= new Especialidad();
+        ep = new Especialidad();
         cur = new Curso();
+        cat= new MCategoria();
+    }
+
+    public List<MProducto> getLisproduct() {
+        return lisproduct;
+    }
+
+    public void setLisproduct(List<MProducto> lisproduct) {
+        this.lisproduct = lisproduct;
     }
 
     public List<Alumno> getLisalu() {
@@ -185,7 +231,13 @@ public class control1 implements Serializable {
     public void setCantAPO(int CantAPO) {
         this.CantAPO = CantAPO;
     }
-    
-    
+
+    public MCategoria getCat() {
+        return cat;
+    }
+
+    public void setCat(MCategoria cat) {
+        this.cat = cat;
+    }
 
 }

@@ -6,9 +6,9 @@ public class MySQLConexion {
                 		try { 
                 Class.forName("com.mysql.cj.jdbc.Driver");   
                   //  Class.forName("com.mysql.jdbc.Driver"); 
-		String url = "jdbc:mysql://localhost/bdnotas"; 
+		String url = "jdbc:mysql://localhost/posjava"; 
 		String usr = "root";
-		String psw = ""; 
+		String psw = "root"; 
 		con = DriverManager.getConnection(url,usr,psw); 
 		System.out.println("conexion ok");
 		} catch (ClassNotFoundException ex)
